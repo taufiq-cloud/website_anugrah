@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQUA-VITA | Kesegaran Mineral Alami Premium</title>
+    
+    <!-- Framework & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+        .text-gradient { background: linear-gradient(to right, #0288d1, #4FC3F7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-gradient { background: linear-gradient(to right, #0288d1, #4FC3F7); transition: all 0.3s ease; }
+        .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(79, 195, 247, 0.4); }
+        .float { animation: floating 3s ease-in-out infinite; }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <nav x-data="{ atTop: true, mobileMenu: false }" 
+         @scroll.window="atTop = (window.pageYOffset > 50 ? false : true)"
+         :class="{ 'glass py-3 shadow-sm': !atTop, 'bg-transparent py-6': atTop }"
+         class="fixed w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Logo Anugrah" class="h-10 md:h-12 w-auto object-contain">
+                <span class="text-2xl font-bold tracking-tight text-blue-900 uppercase">Anugrah</span>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 font-medium text-blue-900/80">
+                <a href="#home" class="hover:text-blue-500 transition">Home</a>
+                <a href="#keunggulan" class="hover:text-blue-500 transition">Tentang Kami</a>
+                <a href="#tentang" class="hover:text-blue-500 transition">Produk</a>
+                <a href="#produk" class="hover:text-blue-500 transition">Galeri</a>
+                <a href="#kontak" class="hover:text-blue-500 transition">Artikel</a>
+                <a href="#kontak" class="hover:text-blue-500 transition">Kontak</a>
+            </div>
+
+            <!-- CTA Desktop -->
+            <a href="#" class="hidden md:block btn-gradient text-white px-8 py-3 rounded-full font-semibold shadow-lg">
+                Pesan Sekarang
+            </a>
+            
+            <!-- Mobile Toggle -->
+            <button @click="mobileMenu = !mobileMenu" class="md:hidden text-blue-800">
+                <svg x-show="!mobileMenu" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+                <svg x-show="mobileMenu" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div x-show="mobileMenu" 
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-4"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="md:hidden bg-white border-t border-slate-100 absolute w-full left-0 p-6 shadow-xl">
+            <div class="flex flex-col space-y-4 font-semibold">
+                <a @click="mobileMenu = false" href="#home" class="text-blue-900">Home</a>
+                <a @click="mobileMenu = false" href="#keunggulan" class="text-blue-900">Keunggulan</a>
+                <a @click="mobileMenu = false" href="#tentang" class="text-blue-900">Tentang</a>
+                <a @click="mobileMenu = false" href="#produk" class="text-blue-900">Produk</a>
+                <a @click="mobileMenu = false" href="#" class="text-blue-500">Pesan Sekarang</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-b from-blue-50 to-white">
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <svg class="absolute bottom-0 w-full" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#4FC3F7" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,192C384,171,480,117,576,112C672,107,768,149,864,154.7C960,160,1056,128,1152,112C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div data-aos="fade-right" data-aos-duration="1000">
+                <span class="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 font-semibold text-sm mb-6 uppercase tracking-widest">Premium Quality Water</span>
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 text-slate-900">
+                    Kemurnian <span class="text-gradient">Mata Air</span> Alami
+                </h1>
+                <p class="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed">
+                    Diproses dengan teknologi filtrasi tercanggih untuk menjaga kandungan mineral esensial bagi kesehatan tubuh Anda.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="btn-gradient text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl">Mulai Hidup Sehat</button>
+                    <button class="px-10 py-4 rounded-full border-2 border-blue-200 font-bold text-lg text-blue-600 hover:bg-blue-50 transition">Lihat Produk</button>
+                </div>
+            </div>
+            <div class="relative flex justify-center" data-aos="zoom-in" data-aos-duration="1200">
+                <div class="relative z-10 float">
+                    <img src="https://images.unsplash.com/photo-1548919973-5cdf5916ad74?auto=format&fit=crop&q=80&w=600" alt="Botol Mineral" class="w-72 md:w-96 rounded-[3rem] shadow-2xl border-8 border-white object-cover aspect-[3/4]">
+                </div>
+                <div class="absolute -bottom-6 -right-4 glass p-6 rounded-2xl shadow-xl z-20 max-w-[200px]">
+                    <p class="text-sm font-bold text-blue-800">100% Mineral Alami</p>
+                    <p class="text-xs text-slate-500 mt-1">Tanpa bahan tambahan, murni dari sumbernya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEUNGGULAN SECTION -->
+    <section id="keunggulan" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Mengapa Memilih Aqua-Vita?</h2>
+                <div class="w-20 h-1.5 bg-blue-400 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 rounded-3xl bg-blue-50 border border-blue-100 hover:shadow-2xl transition group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-blue-500 transition-colors">
+                        <svg class="w-8 h-8 text-blue-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-900">Sumber Terproteksi</h3>
+                    <p class="text-slate-600 text-sm">Berasal dari mata air vulkanik yang jauh dari pencemaran lingkungan.</p>
+                </div>
+                <!-- Card 2 (SVG Fixed) -->
+                <div class="p-8 rounded-3xl bg-blue-50 border border-blue-100 hover:shadow-2xl transition group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-blue-500 transition-colors">
+                        <svg class="w-8 h-8 text-blue-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-900">Tanpa Sentuhan</h3>
+                    <p class="text-slate-600 text-sm">Dikemas otomatis secara higienis tanpa kontak tangan manusia sedikitpun.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="p-8 rounded-3xl bg-blue-50 border border-blue-100 hover:shadow-2xl transition group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-blue-500 transition-colors">
+                        <svg class="w-8 h-8 text-blue-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-900">BPA Free</h3>
+                    <p class="text-slate-600 text-sm">Botol berkualitas tinggi yang aman bagi kesehatan dan ramah lingkungan.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="p-8 rounded-3xl bg-blue-50 border border-blue-100 hover:shadow-2xl transition group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-blue-500 transition-colors">
+                        <svg class="w-8 h-8 text-blue-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-900">Kaya Elektrolit</h3>
+                    <p class="text-slate-600 text-sm">Kandungan mineral seimbang untuk menjaga performa tubuh harian Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TENTANG SECTION (Fixed ID) -->
+    <section id="tentang" class="py-24 bg-slate-50 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl font-bold mb-8 text-blue-900">Proses Kemurnian Dari Alam</h2>
+                    <div class="space-y-8">
+                        <div class="flex gap-6">
+                            <div class="flex-none w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">1</div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Filtrasi Batuan Alami</h4>
+                                <p class="text-slate-500">Air melewati ratusan lapisan batuan mineral di bawah tanah secara alami.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="flex-none w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">2</div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Pengambilan Terproteksi</h4>
+                                <p class="text-slate-500">Pipa stainless steel steril menarik air langsung tanpa paparan oksigen luar.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="flex-none w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">3</div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">Double Seal System</h4>
+                                <p class="text-slate-500">Segel ganda memastikan produk sampai di tangan Anda tetap murni.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <div class="aspect-video bg-blue-200 rounded-[3rem] shadow-2xl overflow-hidden relative group">
+                        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-blue-900/30 flex items-center justify-center group-hover:bg-blue-900/40 transition">
+                            <button class="w-20 h-20 bg-white/40 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:scale-110 transition">
+                                <svg class="w-10 h-10 fill-current" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6V4z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUK SECTION -->
+    <section id="produk" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-16 gap-4">
+                <div data-aos="fade-right" class="text-center md:text-left">
+                    <h2 class="text-4xl font-bold mb-2 text-blue-900">Varian Produk Kami</h2>
+                    <p class="text-slate-500">Pilihan hidrasi tepat untuk berbagai kebutuhan Anda.</p>
+                </div>
+                <div class="hidden md:block">
+                    <button class="text-blue-600 font-bold border-b-2 border-blue-500 hover:text-blue-800 transition">Lihat Katalog Lengkap &rarr;</button>
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
+                <!-- Product 1 -->
+                <div class="bg-white p-6 rounded-[2.5rem] shadow-lg border border-slate-100 group" data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="bg-slate-50 rounded-[2rem] h-64 flex items-center justify-center overflow-hidden mb-6 transition group-hover:bg-blue-50">
+                        <img src="https://images.unsplash.com/photo-1616118132261-dd536e278f13?auto=format&fit=crop&q=80&w=300" alt="Botol 330ml" class="h-48 group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-xl font-bold mb-1 text-blue-900">Kemasan 330ml</h4>
+                        <p class="text-slate-400 mb-6 text-sm">Praktis untuk bepergian</p>
+                        <button class="w-full py-3 rounded-2xl border-2 border-blue-500 text-blue-600 font-bold hover:bg-blue-500 hover:text-white transition-all">Tambah Pesanan</button>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="bg-white p-6 rounded-[2.5rem] shadow-2xl border-2 border-blue-100 group relative" data-aos="zoom-in-up" data-aos-delay="200">
+                    <div class="absolute top-4 right-6 bg-blue-500 text-white text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider shadow-md">Populer</div>
+                    <div class="bg-blue-50 rounded-[2rem] h-64 flex items-center justify-center overflow-hidden mb-6 transition group-hover:bg-blue-100">
+                        <img src="https://images.unsplash.com/photo-1548919973-5cdf5916ad74?auto=format&fit=crop&q=80&w=300" alt="Botol 600ml" class="h-48 group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-xl font-bold mb-1 text-blue-900">Kemasan 600ml</h4>
+                        <p class="text-slate-400 mb-6 text-sm">Hidrasi harian maksimal</p>
+                        <button class="w-full btn-gradient py-3 rounded-2xl text-white font-bold shadow-lg">Beli Sekarang</button>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="bg-white p-6 rounded-[2.5rem] shadow-lg border border-slate-100 group" data-aos="zoom-in-up" data-aos-delay="300">
+                    <div class="bg-slate-50 rounded-[2rem] h-64 flex items-center justify-center overflow-hidden mb-6 transition group-hover:bg-blue-50">
+                        <img src="https://images.unsplash.com/photo-1632731551065-71c1833d7b42?auto=format&fit=crop&q=80&w=300" alt="Galon 19L" class="h-48 group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-xl font-bold mb-1 text-blue-900">Galon 19 Liter</h4>
+                        <p class="text-slate-400 mb-6 text-sm">Kesegaran untuk keluarga</p>
+                        <button class="w-full py-3 rounded-2xl border-2 border-blue-500 text-blue-600 font-bold hover:bg-blue-500 hover:text-white transition-all">Langganan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="kontak" class="bg-slate-900 text-slate-400 pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-3">
+                        <img src="logo.png" alt="Logo Anugrah" class="h-10 md:h-12 w-auto object-contain">
+                        <span class="text-2xl font-bold tracking-tight text-blue-900 uppercase">Anugrah Tirta Utama</span>
+                    </div>
+                    <p class="text-sm leading-relaxed">
+                        Kami menghadirkan air minum mineral kualitas premium yang diproses secara alami dan higienis demi kesehatan keluarga Indonesia.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-6">Menu Pintar</h5>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="#home" class="hover:text-blue-400 transition">Beranda</a></li>
+                        <li><a href="#keunggulan" class="hover:text-blue-400 transition">Keunggulan</a></li>
+                        <li><a href="#produk" class="hover:text-blue-400 transition">Daftar Produk</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-6">Bantuan</h5>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="#" class="hover:text-blue-400 transition">Cara Order</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Lokasi Pabrik</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-6">Social Media</h5>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition">IG</a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition">FB</a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition">TW</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 text-center text-xs">
+                <p>&copy; 2026 PT AQUA-VITA INDONESIA. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 800,
+            offset: 100
+        });
+    </script>
+</body>
+</html>
